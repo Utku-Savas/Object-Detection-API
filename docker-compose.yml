@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  yolo:
+    build: ./
+    image: yolo
+
+    environment:
+      CLASSES_PATH: /var/lib/yolo/classes.txt
+      ONNX_PATH: /var/lib/yolo/yolov5s.onnx
+
+    ports:
+      - 5000:5000
+
+    volumes:
+      - ./data/yolov5s.onnx:/var/lib/yolo/yolov5s.onnx:ro
+      - ./data/classes.txt:/var/lib/yolo/classes.txt:ro
+      
