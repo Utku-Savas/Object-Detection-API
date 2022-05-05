@@ -12,18 +12,31 @@ cd Object-Detection-API
 ### Usage
 
 Copy ONNX model file and classes list do data folder.
-
 ```bash
 cp yolov5s.onnx <project folder>/data/
 cp classes.txt <project folder>/data/
+```
+
+Change default config parameters
+
+> yolo/config.py
+```python
+class Config(BaseSettings):
+    classes_path: str = "./data/classes.txt"
+    conf_threshold: float = 0.5
+    cuda: bool = False
+    host: str = "0.0.0.0"
+    image_size: int = 640
+    iou_threshold: float = 0.45
+    log_level: str = "info"
+    onnx_path: str = "./data/yolov5s.onnx"
+    port: int = "5000"
 ```
 
 Run docker image
 ```bash
 docker-compose up
 ```
-
-
 
 ### Sample Mock Code
 
