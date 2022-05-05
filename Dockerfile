@@ -13,6 +13,7 @@ COPY requirements.txt .
 RUN pip3 install --upgrade --no-cache -r requirements.txt
 
 COPY yolo /app/yolo
+COPY data /app/data
 
 ENTRYPOINT ["/usr/bin/python3", "-m"]
 CMD ["yolo"]
